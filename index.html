@@ -4,200 +4,357 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arnav Anand — Portfolio</title>
-  <meta name="description" content="Arnav Anand — B.Sc. (Hons.) Computer Science & Data Analytics — portfolio" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --stanford-red: #8c1515;
-      --light-gray: #f5f5f5;
-      --muted: #666;
-      --dark: #2e2d29;
+      --primary-color: #8c1515;
+      --background: #f9f7f3;
+      --card-bg: #ffffff;
+      --text-dark: #2e2d29;
+      --text-muted: #555;
+      --hover-light: #f0e9e9;
+      --border-radius: 12px;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
     body {
+      font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
-      font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
-      background: #fff;
-      color: var(--dark);
-      line-height: 1.6;
+      background-color: var(--background);
+      color: var(--text-dark);
     }
+
     header {
-      background: var(--stanford-red);
-      color: #fff;
-      padding: 40px 20px;
-    }
-    .header-container {
-      max-width: 1100px;
-      margin: 0 auto;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px 30px;
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
     }
-    .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-      border: 3px solid #fff;
-    }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .title h1 { margin: 0; font-size: 36px; font-weight: 700; }
-    .subtitle { margin-top: 6px; font-size: 18px; opacity: 0.9; }
 
-    nav {
-      background: #fafafa;
-      border-bottom: 1px solid #ddd;
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
     }
-    .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      gap: 20px;
-      padding: 12px 20px;
+
+    header .search input {
+      padding: 8px 15px;
+      border-radius: 25px;
+      border: none;
+      font-size: 14px;
     }
-    .nav-container a {
+
+    header .links a {
+      color: white;
       text-decoration: none;
+      margin-left: 20px;
       font-weight: 600;
-      font-size: 15px;
-      color: var(--dark);
-      padding: 6px 0;
-      position: relative;
     }
-    .nav-container a.active,
-    .nav-container a:hover {
-      color: var(--stanford-red);
+
+    header .links a:hover {
+      text-decoration: underline;
+    }
+
+    .banner {
+      max-width: 1000px;
+      margin: 25px auto;
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .avatar img {
+      width: 140px;
+      height: 140px;
+      border-radius: var(--border-radius);
+      object-fit: cover;
+      border: 4px solid var(--primary-color);
+    }
+
+    .banner-content h1 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--primary-color);
+    }
+
+    .banner-content p {
+      margin: 6px 0;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .tabs {
+      max-width: 1000px;
+      margin: 20px auto;
+      display: flex;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 12px 0;
+      background-color: var(--card-bg);
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .tabs button:hover {
+      background-color: var(--hover-light);
+    }
+
+    .tabs button.active {
+      background-color: var(--primary-color);
+      color: white;
     }
 
     .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 40px;
+      max-width: 1000px;
+      margin: 20px auto;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-    section h2 { font-size: 22px; font-weight: 700; margin: 0 0 12px; color: var(--stanford-red); }
-    p.lead { margin: 0 0 12px; color: var(--muted); font-size: 16px; }
-    ul { margin: 0; padding-left: 20px; }
-    li { margin-bottom: 10px; }
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tag { padding: 4px 10px; border-radius: 20px; background: var(--light-gray); font-size: 13px; color: var(--muted); }
+
+    main {
+      flex: 3;
+      background-color: var(--card-bg);
+      padding: 25px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      min-width: 300px;
+    }
+
+    aside {
+      flex: 1;
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      min-width: 250px;
+    }
+
+    section h2 {
+      color: var(--primary-color);
+      margin-top: 0;
+    }
+
+    p.lead {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 14px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background-color: var(--hover-light);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    .contact-links a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
 
     footer {
-      background: #fafafa;
-      border-top: 1px solid #ddd;
-      color: var(--muted);
-      font-size: 14px;
       text-align: center;
       padding: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      border-top: 1px solid #ddd;
+      margin-top: 30px;
     }
 
-    @media (max-width: 880px) {
-      .header-container { flex-direction: column; align-items: flex-start; }
-      .container { grid-template-columns: 1fr; }
-      .avatar { width: 120px; height: 120px; }
+    @media (max-width: 768px) {
+      .banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .container {
+        flex-direction: column;
+      }
+      .tabs {
+        flex-direction: column;
+      }
+      .tabs button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <div class="avatar">
-        <img src="edited.png" alt="Arnav Anand" onerror="this.src='https://via.placeholder.com/160x160.png?text=Arnav'" />
-      </div>
-      <div class="title">
-        <h1>Arnav Anand</h1>
-        <div class="subtitle">B.Sc. (Hons.) Computer Science & Data Analytics — Indian Institute of Technology, Patna</div>
-      </div>
+    <div class="logo">Arnav Anand</div>
+    <div class="search">
+      <input type="text" placeholder="Search..." />
+    </div>
+    <div class="links">
+      <a href="#">Browse</a>
+      <a href="#">Sign In</a>
+      <a href="#">Edit Profile</a>
     </div>
   </header>
 
-  <nav>
-    <div class="nav-container">
-      <a href="#about" class="active">Bio</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#publications">Publications</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+  <div class="banner">
+    <div class="avatar">
+      <img src="edited.png" alt="Arnav Anand" onerror="this.src='https://via.placeholder.com/140x140.png?text=Arnav'" />
     </div>
-  </nav>
+    <div class="banner-content">
+      <h1>Arnav Anand</h1>
+      <p>B.Sc. (Hons.) Computer Science & Data Analytics</p>
+      <p>Indian Institute of Technology, Patna</p>
+      <p>Aspiring Data Scientist / Software Engineer</p>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="active" onclick="showTab('about')">Bio</button>
+    <button onclick="showTab('experience')">Experience</button>
+    <button onclick="showTab('projects')">Projects</button>
+    <button onclick="showTab('education')">Education</button>
+    <button onclick="showTab('skills')">Skills</button>
+    <button onclick="showTab('certifications')">Certifications</button>
+    <button onclick="showTab('languages')">Languages</button>
+    <button onclick="showTab('contact')">Contact</button>
+  </div>
 
   <div class="container">
-    <main>
-      <section id="about">
+    <main id="main-content">
+      <!-- All sections here as in your original code -->
+      <section id="about-tab">
         <h2>About</h2>
-        <p class="lead">Aspiring Data Scientist / Software Engineer with strong ML & backend experience. Built production-ready websites, ML pipelines and end-to-end data products using Python, Django, Pandas and Scikit-learn. Seeking SDE / Data Science roles where I can apply ML and Full-Stack engineering to business problems.</p>
+        <p class="lead">
+          Aspiring Data Scientist / Software Engineer with strong ML & backend experience. CPI 8.78 (IIT Patna). Built production-ready websites, ML pipelines and end-to-end data products using Flutter, Python, Django, Pandas, Scikit-learn etc. Seeking SDE / Data Science roles where I can apply ML and Full-Stack engineering to business problems.
+        </p>
       </section>
-
-      <section id="experience">
+      <section id="experience-tab" style="display: none;">
         <h2>Internship Experience</h2>
         <ul>
-          <li><strong>Software Engineer Intern</strong> — VestaStrat (Vion Campus) · Aug 2025 – Present<br><small>Working on scalable AI-based solutions and backend workflows.</small></li>
-          <li><strong>Software Developer Engineer Intern</strong> — Bluestock Fintech · May 2025 – Jun 2025<br><small>Built backend APIs using Django & DRF; designed data models and integrated MySQL.</small></li>
-          <li><strong>AI/Data Science Intern</strong> — NDVTechsys Solutions · Jun 2025 – Jul 2025<br><small>Applied ML concepts on datasets and delivered project solutions.</small></li>
-          <li><strong>Data Science Intern</strong> — Personifwy Pvt Ltd · Mar 2024 – Apr 2024<br><small>Interpreted data and analyzed results using statistical techniques.</small></li>
+          <li><strong>Software Engineer Intern</strong> — VestaStrat · Aug 2025 – Present<br /><small>Working on scalable AI-based solutions for enterprise use cases. Enhancing backend workflows and optimizing data pipelines.</small></li>
+          <li><strong>Software Developer Engineer Intern</strong> — Bluestock Fintech · May 2025 – Jun 2025<br /><small>Built backend APIs using Django and DRF; designed data models and integrated MySQL database for IPO-related information.</small></li>
+          <li><strong>AI/Data Science Intern</strong> — NDVTechsys Solutions · Jun 2025 – Jul 2025<br /><small>Applied ML concepts on datasets and contributed to project solutions.</small></li>
+          <li><strong>Data Science Intern</strong> — Personifwy Pvt Ltd · Mar 2024 – Apr 2024<br /><small>Interpreted data and analyzed results using statistical techniques.</small></li>
         </ul>
       </section>
-
-      <section id="projects">
-        <h2>Selected Projects</h2>
+      <section id="projects-tab" style="display: none;">
+        <h2>Projects</h2>
         <ul>
-          <li><strong>Reddit Stock Movement Analysis</strong> — Predicted market trends using Reddit discussions (Nov 2024 – Dec 2024).</li>
-          <li><strong>Customer Churn Analysis</strong> — Telecom churn factors analysis (Feb 2025 – Mar 2025).</li>
-          <li><strong>Restaurant Rating Prediction</strong> — ML web app predicting restaurant ratings (May 2025).</li>
-          <li><strong>Image Captioning by AI</strong> — CNN + RNN based caption generator (2025).</li>
-          <li><strong>Personal AI Chatbot</strong> — Conversational chatbot with NLP & Flask (2024).</li>
+          <li><strong>Reddit Stock Movement Analysis</strong> — Nov 2024 – Dec 2024<br /><small>Predicted stock market trends using Reddit discussions.</small></li>
+          <li><strong>Customer Churn Analysis</strong> — Feb 2025 – Mar 2025<br /><small>Analyzed telecom data to identify churn factors.</small></li>
+          <li><strong>Restaurant Rating Prediction</strong> — May 2025<br /><small>ML-powered web app predicting restaurant ratings.</small></li>
+          <li><strong>Hate Speech Detection</strong> — 2025<br /><small>Built NLP model for toxic content classification.</small></li>
+          <li><strong>Image Captioning by AI</strong> — 2025<br /><small>Generated captions from images using CNN + RNN.</small></li>
+          <li><strong>Indian House Price Predictor</strong> — 2025<br /><small>Predicted housing prices using ML regression models.</small></li>
+          <li><strong>Music Recommendation System</strong> — 2024<br /><small>Recommendation engine using collaborative filtering.</small></li>
+          <li><strong>Personal Weather App</strong> — 2024<br /><small>Weather forecasting app with API integration.</small></li>
+          <li><strong>Personal AI Chatbot</strong> — 2024<br /><small>Conversational chatbot built with NLP + Flask.</small></li>
         </ul>
       </section>
-
-      <section id="publications">
-        <h2>Publications & Presentations</h2>
-        <p class="lead">(Add any papers, posters, or presentations here.)</p>
-      </section>
-    </main>
-
-    <aside>
-      <section id="education">
+      <section id="education-tab" style="display: none;">
         <h2>Education</h2>
-        <p><strong>B.Sc. (Hons.) Computer Science and Data Analytics</strong><br>Indian Institute of Technology, Patna · 2023 – Present<br><small>CPI 8.78</small></p>
+        <ul>
+          <li><strong>B.Sc. (Hons.) Computer Science and Data Analytics</strong><br />IIT Patna · 2023 – Present · CPI 8.78 · SPI 10.0 in Sem 3</li>
+          <li><strong>Senior Secondary (Class XII)</strong><br />Sunbeam School Lahartara, Varanasi · CBSE · 2022 · 91%</li>
+          <li><strong>Secondary (Class X)</strong><br />Sunbeam School Lahartara, Varanasi · CBSE · 2020 · 88%</li>
+        </ul>
       </section>
-
-      <section id="skills">
+      <section id="skills-tab" style="display: none;">
         <h2>Technical Skills</h2>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Django</span>
-          <span class="tag">Flask</span>
-          <span class="tag">Pandas</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">Scikit-learn</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">SQL</span>
-          <span class="tag">Flutter</span>
-        </div>
+        <h3>Programming</h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Flutter</span><span class="tag">Java</span><span class="tag">JavaScript</span></div>
+        <h3>Libraries/Frameworks</h3>
+        <div class="tags"><span class="tag">Flask</span><span class="tag">Django</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Scikit-learn</span><span class="tag">Streamlit</span><span class="tag">Gradio</span><span class="tag">Node.js</span></div>
+        <h3>Concepts</h3>
+        <div class="tags"><span class="tag">Machine Learning</span><span class="tag">Deep Learning</span><span class="tag">Generative AI</span><span class="tag">Prompt Engineering</span><span class="tag">Predictive Modeling</span><span class="tag">AI Strategy Design</span><span class="tag">NLP</span></div>
+        <h3>Tools</h3>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">MS PowerPoint</span><span class="tag">GitHub Co-Pilot</span><span class="tag">AI Tools</span></div>
+        <h3>Other</h3>
+        <div class="tags"><span class="tag">DSA</span><span class="tag">Full Stack Development</span><span class="tag">Firebase DB</span></div>
       </section>
-
-      <section id="awards">
+      <section id="certifications-tab" style="display: none;">
         <h2>Certifications & Achievements</h2>
         <ul>
           <li>3rd — CodeQuest Coding Competition (IIT Patna, Apr 2025)</li>
-          <li>Time Series Analysis — IIT Guwahati (2025)</li>
+          <li>TCS iON Career Edge - Young Professional (Sep 2025)</li>
+          <li>Certificate of Excellence — Time Series Analysis (IIT Guwahati, 2025)</li>
+          <li>Certificate of Merit — Summer Analytics (IIT Guwahati, 2025)</li>
           <li>AI Skills Passport — EY & Microsoft (2025)</li>
+          <li>BCG GenAI Job Simulation — Forage (2025)</li>
+          <li>HP LIFE Data Science & Analytics (Apr 2025)</li>
+          <li>Tata Group Data Analytics Job Simulation — Forage (May 2025)</li>
+          <li>Career Essentials in Generative AI — Microsoft & LinkedIn (Jun 2024)</li>
+          <li>Machine Learning with Python — IBM (Jan 2024)</li>
         </ul>
       </section>
-
-      <section id="contact">
-        <h2>Contact</h2>
-        <p class="lead">Varanasi, UP<br><a href="mailto:beingarnavanand@gmail.com">beingarnavanand@gmail.com</a></p>
+      <section id="languages-tab" style="display: none;">
+        <h2>Languages</h2>
+        <ul>
+          <li>Hindi – Full Professional Proficiency</li>
+          <li>English – Limited Working Proficiency</li>
+        </ul>
       </section>
-    </aside>
+      <section id="contact-tab" style="display: none;">
+        <h2>Contact</h2>
+        <p class="lead">Varanasi, UP · India</p>
+        <p><strong>Phone:</strong> +91-7068667737</p>
+        <p><strong>Email:</strong> <a class="contact-links" href="mailto:beingarnavanand@gmail.com">beingarnavanand@gmail.com</a></p>
+        <p><strong>GitHub:</strong> <a class="contact-links" href="https://github.com/Arnaviitp" target="_blank">github.com/Arnaviitp</a></p>
+        <p><strong>LinkedIn:</strong> <a class="contact-links" href="https://www.linkedin.com/in/arnav-anand-2412-iitp/" target="_blank">linkedin.com/in/arnav-anand-2412-iitp</a></p>
+        <p><strong>Portfolio:</strong> <a class="contact-links" href="https://arnav-anand-iitp-portfolio.vercel.app/" target="_blank">arnav-anand-iitp-portfolio.vercel.app</a></p>
+      </section>
+    </main>
   </div>
 
-  <footer>
-    Built with ♥ — <em>By Arnav Anand</em>
-  </footer>
+  <footer>© 2025 Arnav Anand • Built with ♥</footer>
+
+  <script>
+    function showTab(tab) {
+      const tabs = ["about","experience","projects","education","skills","certifications","languages","contact"];
+      tabs.forEach(t => {
+        document.getElementById(t + "-tab").style.display = (t === tab) ? "block" : "none";
+      });
+      document.querySelectorAll(".tabs button").forEach((btn, index) => {
+        btn.classList.toggle("active", tabs[index] === tab);
+      });
+    }
+  </script>
 </body>
 </html>
 
