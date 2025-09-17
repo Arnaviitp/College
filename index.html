@@ -17,8 +17,8 @@
         --text-dark: #2e2d29;
         --text-muted: #555;
         --hover-light: #f0e9e9;
-        --border-radius: 0.75rem; /* 12px */
-        --shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1); /* 4px 10px */
+        --border-radius: 0.75rem;
+        --shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
         --border-color: #ddd;
         --focus-color: #8c1515;
         --selection-bg: #8c1515;
@@ -30,6 +30,10 @@
         --space-md: 1rem;
         --space-lg: 1.5rem;
         --space-xl: 2rem;
+
+        /* Neutral tint for zebra effect */
+        --section-bg-light: rgba(0, 0, 0, 0.04);
+        --section-bg-lighter: rgba(0, 0, 0, 0.08);
       }
 
       * {
@@ -93,8 +97,9 @@
         color: var(--primary-color);
       }
 
+      /* Sticky Header with backdrop */
       header {
-        background-color: var(--primary-color);
+        background-color: rgba(140, 21, 21, 0.95);
         color: white;
         padding: var(--space-md) var(--space-xl);
         display: flex;
@@ -102,6 +107,10 @@
         justify-content: space-between;
         box-shadow: var(--shadow);
         border-radius: var(--border-radius);
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(6px);
+        z-index: 999;
       }
 
       header .logo {
@@ -112,20 +121,20 @@
       header .search input {
         padding: 0.5rem 1rem;
         border-radius: 1.5rem;
-        border: 0.0625rem solid var(--border-color); /* 1px */
+        border: 0.0625rem solid var(--border-color);
         font-size: 0.875rem;
       }
 
       header .search input:focus {
         outline: none;
-        box-shadow: 0 0 0 0.1875rem rgba(140, 21, 21, 0.3); /* 3px */
+        box-shadow: 0 0 0 0.1875rem rgba(140, 21, 21, 0.3);
         border-color: var(--focus-color);
       }
 
       header .links a {
         color: white;
         text-decoration: none;
-        margin-left: 1.25rem; /* 20px */
+        margin-left: 1.25rem;
         font-weight: 600;
       }
 
@@ -134,7 +143,7 @@
         color: #ffb3b3;
       }
       header .links a:focus {
-        outline: 0.125rem solid white; /* 2px */
+        outline: 0.125rem solid white;
       }
       header .links a:active {
         color: #ffd6d6;
@@ -143,10 +152,18 @@
         color: #ffeeee;
       }
 
+      /* Hero section with linear gradient overlay */
       .banner {
-        max-width: 62.5rem; /* 1000px */
+        max-width: 62.5rem;
         margin: var(--space-lg) auto;
         background-color: var(--card-bg);
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.85),
+            rgba(255, 255, 255, 0.85)
+          ),
+          url("pattern.svg"); /* optional subtle pattern */
+        background-size: cover;
+        background-repeat: no-repeat;
         padding: var(--space-lg);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
@@ -157,11 +174,11 @@
       }
 
       .avatar img {
-        width: min(28vw, 13.75rem); /* 220px */
+        width: min(28vw, 13.75rem);
         height: min(28vw, 13.75rem);
         border-radius: var(--border-radius);
         object-fit: cover;
-        border: 0.25rem solid var(--primary-color); /* 4px */
+        border: 0.25rem solid var(--primary-color);
       }
 
       .banner-content > h1 {
@@ -174,8 +191,8 @@
       }
 
       .banner-content p {
-        margin: 0.375rem 0; /* 6px */
-        font-size: 0.9375rem; /* 15px */
+        margin: 0.375rem 0;
+        font-size: 0.9375rem;
         color: var(--text-muted);
       }
 
@@ -227,7 +244,7 @@
         padding: var(--space-xl);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
-        min-width: 18.75rem; /* 300px */
+        min-width: 18.75rem;
         border: 0.0625rem solid var(--border-color);
       }
 
@@ -237,14 +254,20 @@
         padding: var(--space-lg);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
-        min-width: 15.625rem; /* 250px */
+        min-width: 15.625rem;
         border: 0.0625rem solid var(--border-color);
       }
 
-      section {
-        padding-top: var(--space-md);
-        margin-top: var(--space-md);
-        border-top: 0.0625rem solid #eee;
+      /* Zebra effect for sections */
+      main section:nth-child(even) {
+        background-color: var(--section-bg-light);
+        padding: var(--space-md);
+        border-radius: var(--border-radius);
+      }
+      main section:nth-child(odd) {
+        background-color: var(--section-bg-lighter);
+        padding: var(--space-md);
+        border-radius: var(--border-radius);
       }
 
       section h2 {
@@ -308,7 +331,6 @@
       }
 
       @media (max-width: 48rem) {
-        /* 768px */
         .banner {
           flex-direction: column;
           text-align: center;
@@ -628,4 +650,3 @@
     </script>
   </body>
 </html>
-
