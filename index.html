@@ -21,6 +21,8 @@
         --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         --border-color: #ddd;
         --focus-color: #8c1515;
+        --selection-bg: #8c1515;
+        --selection-color: #fff;
       }
 
       * {
@@ -34,6 +36,12 @@
         background-color: var(--background);
         color: var(--text-dark);
         font-weight: 400;
+      }
+
+      /* ::selection Pseudo-element */
+      ::selection {
+        background-color: var(--selection-bg);
+        color: var(--selection-color);
       }
 
       h1,
@@ -72,6 +80,13 @@
         line-height: 1.6;
       }
 
+      /* ::first-line Pseudo-element */
+      #about-tab p.lead::first-line {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+      }
+
       header {
         background-color: var(--primary-color);
         color: white;
@@ -108,10 +123,19 @@
         font-weight: 600;
       }
 
-      header .links a:hover,
-      header .links a:focus {
+      /* Pseudo-classes for nav links */
+      header .links a:hover {
         text-decoration: underline;
-        outline: none;
+        color: #ffb3b3;
+      }
+      header .links a:focus {
+        outline: 2px solid white;
+      }
+      header .links a:active {
+        color: #ffd6d6;
+      }
+      header .links a:visited {
+        color: #ffeeee;
       }
 
       .banner {
@@ -124,7 +148,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
-        border: 1px solid var(--border-color); /* Added soft card border */
+        border: 1px solid var(--border-color);
       }
 
       .avatar img {
@@ -135,8 +159,14 @@
         border: 4px solid var(--primary-color);
       }
 
-      .banner-content h1 {
-        color: var(--primary-color);
+      /* Descendant vs Child Selector */
+      .banner-content > h1 {
+        color: #8c1515;
+        font-size: 2.5rem;
+      }
+
+      .banner-content h1 span {
+        color: blue; /* Nested children remain unaffected by > selector */
       }
 
       .banner-content p {
@@ -153,7 +183,7 @@
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
         overflow-x: auto;
-        border: 1px solid var(--border-color); /* Tab container border */
+        border: 1px solid var(--border-color);
       }
 
       .tabs button {
@@ -194,7 +224,7 @@
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
         min-width: 300px;
-        border: 1px solid var(--border-color); /* Card border */
+        border: 1px solid var(--border-color);
       }
 
       aside {
@@ -204,13 +234,13 @@
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
         min-width: 250px;
-        border: 1px solid var(--border-color); /* Card border */
+        border: 1px solid var(--border-color);
       }
 
       section {
         padding-top: 15px;
         margin-top: 15px;
-        border-top: 1px solid #eee; /* Section divider */
+        border-top: 1px solid #eee;
       }
 
       section h2 {
@@ -250,6 +280,12 @@
         color: var(--primary-color);
         text-decoration: none;
         font-weight: 600;
+      }
+
+      /* Attribute selector for external links */
+      a[href^="http"]::after {
+        content: " 🔗";
+        font-size: 0.9em;
       }
 
       .contact-links a:hover,
@@ -308,7 +344,7 @@
       </div>
       <div class="banner-content">
         <h1>Arnav Anand</h1>
-        <p>B.Sc. (Hons.) Computer Science & Data Analytics</p>
+        <p>B.S (Hons.) Computer Science & Data Analytics</p>
         <p>Indian Institute of Technology, Patna</p>
         <p>Aspiring Data Scientist / Software Engineer</p>
       </div>
@@ -588,3 +624,4 @@
     </script>
   </body>
 </html>
+
